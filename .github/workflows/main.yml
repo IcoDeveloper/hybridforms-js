@@ -3,8 +3,8 @@ name: Node.js CI
 on: [push]
 
 env:
-    HF_BASE_URL: ${{ vars.HF_BASE_URL }}
-    HF_USER: ${{ vars.HF_USER }}
+    HF_BASE_URL: ${{ secrets.HF_BASE_URL }}
+    HF_USER: ${{ secrets.HF_USER }}
     HF_PASSWORD: ${{ secrets.HF_PASSWORD }}
 
 jobs:
