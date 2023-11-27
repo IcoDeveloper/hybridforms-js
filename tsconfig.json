@@ -1,0 +1,27 @@
+{
+    "include": [
+        "src",
+    ],
+    "exclude": [
+        "node_modules/**/*.ts"
+    ],
+    "compilerOptions": {
+        "declaration": true,
+        "declarationMap": false,
+        "module": "CommonJS",
+        "outDir": "dist/main",
+        "rootDir": "src",
+        "sourceMap": true,
+        "target": "ES2015",
+        "lib": [
+            "es2022",
+            "dom"
+        ],
+        "strict": true,
+        "esModuleInterop": true,
+        "moduleResolution": "Node",
+        "forceConsistentCasingInFileNames": true,
+        "stripInternal": true,
+        "allowSyntheticDefaultImports": true
+    }
+}

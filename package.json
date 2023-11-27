@@ -1,0 +1,80 @@
+{
+    "name": "@icomedias/hybridforms-js",
+    "description": "Isomorphic Javascript client for HybridForms",
+    "version": "0.0.1",
+    "scripts": {
+        "build": "run-s clear prettier build:*",
+        "build:main": "tsc -p tsconfig.json",
+        "build:module": "tsc -p tsconfig.esm.json",
+        "build:umd": "webpack --config webpack.config.js --mode=production && npm run generate:types",
+        "generate:types": "dts-bundle-generator --umd-module-name HybridFormsJS -o dist/umd/hybridforms.d.ts src/index.ts",
+        "clear": "rimraf dist/*",
+        "prettier": "prettier src --write",
+        "lint": "eslint src --ext .ts --fix",
+        "test": "npm run lint && npm run test-node",
+        "test-node": "cross-env NODE_ENV=test DOTENV_CONFIG_PATH=.env.test TS_NODE_PROJECT=tsconfig.spec.json TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register -r dotenv/config --project tsconfig.spec.json 'test/*.ts'"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE.md"
+    ],
+    "main": "dist/main/index.js",
+    "module": "dist/module/index.js",
+    "types": "dist/module/index.d.ts",
+    "devDependencies": {
+        "@types/chai": "^4.3.5",
+        "@types/chai-uuid": "^1.0.5",
+        "@types/jwt-decode": "^3.1.0",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "^20.4.6",
+        "@typescript-eslint/eslint-plugin": "^5.0.0",
+        "@typescript-eslint/parser": "^5.0.0",
+        "chai": "^4.3.7",
+        "chai-uuid": "^1.0.6",
+        "cross-env": "^7.0.3",
+        "dotenv": "^16.3.1",
+        "dts-bundle-generator": "^8.1.2",
+        "eslint": "^8.54.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-prettier": "^5.0.1",
+        "mocha": "^10.2.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^3.1.0",
+        "prettier-plugin-organize-imports": "^3.2.4",
+        "rimraf": "^5.0.1",
+        "terser-webpack-plugin": "^5.3.9",
+        "ts-loader": "^9.5.1",
+        "ts-node": "^10.9.1",
+        "ts-standard": "^12.0.2",
+        "typescript": "^5.1.6",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4"
+    },
+    "dependencies": {
+        "jwt-decode": "^4.0.0",
+        "node-fetch": "^3.3.2"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "keywords": [
+        "javascript",
+        "typescript",
+        "hybridforms"
+    ],
+    "engines": {
+        "node": ">=18.0"
+    },
+    "author": {
+        "name": "icomedias GmbH",
+        "url": "https://icomedias.com"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/digitalcredentials/isomorphic-lib-template"
+    },
+    "homepage": "https://www.hybridforms.net",
+    "bugs": "https://github.com/digitalcredentials/isomorphic-lib-template/issues"
+}
