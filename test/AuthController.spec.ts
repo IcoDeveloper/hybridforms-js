@@ -1,6 +1,8 @@
 import { expect } from 'chai';
 import { createClient } from '../src';
 
+console.log(process.env);
+
 const hybridforms = createClient({
     baseUrl: process.env.HF_BASE_URL ?? '',
     clientId: '1',
