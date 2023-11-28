@@ -9,6 +9,7 @@ import {
     SigninResponse
 } from '@/types/types';
 import { CatalogsController } from './controller/CatalogsController';
+import { SimpleAPIController } from './controller/SimpleAPIController';
 
 export default class HybridFormsClient {
     private readonly authInstance: Authentication | null = null;
@@ -19,6 +20,7 @@ export default class HybridFormsClient {
     public readonly auth: AuthController;
     public readonly formDefinitions: FormDefinitionsController;
     public readonly forms: FormsController;
+    public readonly simpleAPI: SimpleAPIController;
     public readonly catalogs: CatalogsController;
 
     constructor(config: HybridFormsClientConfig) {
@@ -55,6 +57,7 @@ export default class HybridFormsClient {
             this.requestWithAuth
         );
         this.forms = new FormsController(config, this.requestWithAuth);
+        this.simpleAPI = new SimpleAPIController(config, this.requestWithAuth);
         this.catalogs = new CatalogsController(config, this.requestWithAuth);
     }
 }

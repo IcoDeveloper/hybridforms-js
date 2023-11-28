@@ -118,3 +118,37 @@ export interface GetFormParams {
 export type GetFormResponse = FormServerFormat;
 
 export type ListFormFilesResponse = FileServer[];
+
+export interface IRepeatingUnitTab {
+    operation?: 'create' | 'update' | 'delete';
+    position?: number;
+    fields?: FormFieldDictionary;
+}
+
+export interface RepeatingUnitTabs {
+    [key: string]: IRepeatingUnitTab[];
+}
+
+export interface FormBinaryContent {
+    filename?: string;
+    id?: string;
+    remark?: string;
+    hideInPDF?: boolean;
+    readonly?: boolean;
+    content?: string;
+    contentFilename?: string;
+    operation?: 'create' | 'update' | 'delete';
+}
+
+export interface SimpleAPIData {
+    culture?: string;
+    title?: string;
+    owner?: string;
+    group?: string;
+    feedback?: string;
+    fields?: FormFieldDictionary;
+    repeatingUnits?: RepeatingUnitTabs;
+    pictures?: FormBinaryContent[];
+    documents?: FormBinaryContent[];
+    audio?: FormBinaryContent[];
+}

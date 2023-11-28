@@ -1,7 +1,8 @@
 import { expect } from 'chai';
 import { createClient } from '../src';
+import HybridFormsClient from '../src/HybridFormsClient';
 
-const hybridforms = createClient({
+const hybridforms: HybridFormsClient = createClient({
     baseUrl: process.env.HF_BASE_URL ?? '',
     clientId: '1',
     user: process.env.HF_USER ?? '',
