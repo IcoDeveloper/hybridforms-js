@@ -1,33 +1,25 @@
-# Isomorphic TS/JS Lib _(@isomedias/hybridforms)_
+# Isomorphic TS/JS Lib _(@icomedias/hybridforms)_
 
 [![Build status](https://img.shields.io/github/actions/workflow/status/IcoDeveloper/hybridforms-js/main.yml?branch=main)](https://github.com/IcoDeveloper/hybridforms-js/actions?query=workflow%3A%22Node.js+CI%22)
-[![NPM Version](https://img.shields.io/npm/v/@isomedias/hybridforms.svg)](https://npm.im/@isomedias/hybridforms)
+[![NPM Version](https://img.shields.io/npm/v/@icomedias/hybridforms.svg)](https://npm.im/@icomedias/hybridforms)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-> A Typescript/Javascript isomorphic library, for use in HybridForms forms and Node.js.
->
-> Typedoc: https://icodeveloper.github.io/hybridforms-js/
+A Typescript/Javascript isomorphic library, for use in HybridForms forms and Node.js.
+
+Typedoc: https://icodeveloper.github.io/hybridforms-js/
 
 ## Table of Contents
 
-- [Isomorphic TS/JS Lib _(@isomedias/hybridforms)_](#isomorphic-tsjs-lib-isomediashybridforms)
+- [Isomorphic TS/JS Lib _(@icomedias/hybridforms)_](#isomorphic-tsjs-lib-icomediashybridforms)
   - [Table of Contents](#table-of-contents)
-  - [Background](#background)
-  - [Security](#security)
   - [Install](#install)
     - [NPM](#npm)
     - [Development](#development)
   - [Usage](#usage)
+    - [UMD](#umd)
+    - [Custom `xhr` implementation](#custom-xhr-implementation)
   - [Contribute](#contribute)
   - [License](#license)
-
-## Background
-
-TBD
-
-## Security
-
-TBD
 
 ## Install
 
@@ -38,7 +30,7 @@ TBD
 To install via NPM:
 
 ```
-npm install @isomedias/hybridforms
+npm install @icomedias/hybridforms
 ```
 
 ### Development
@@ -53,7 +45,68 @@ npm install
 
 ## Usage
 
-TBD
+First of all, you need to install the library:
+
+```sh
+npm install @icomedias/hybridforms
+```
+
+Then you're able to import the library and establish the connection with the database:
+
+```js
+import { createClient } from '@icomedias/hybridforms'
+
+// Create a single HybridForms client for interacting with the API
+const hybridforms = createClient({
+    baseUrl: 'example.hybridforms.com',
+    clientId: '1',
+    user: 'test@test.com',
+    password: '123456'
+})
+```
+
+### UMD
+
+You can now use plain `<script>`s to import hybridforms-js, like:
+
+```html
+<script src="hybridforms.min.js"></script>
+```
+
+Then you can use it from a global `HybridFormsJS` variable:
+
+```html
+<script>
+    const { createClient } = HybridFormsJS
+    const hybridforms = createClient({
+        baseUrl: 'example.hybridforms.com',
+        clientId: '1',
+        user: 'test@test.com',
+        password: '123456'
+    })
+
+    console.log('HybridForms Instance: ', hybridforms)
+  // ...
+</script>
+```
+
+### Custom `xhr` implementation
+
+`hybridforms-js` uses the [`node-fetch`](https://www.npmjs.com/package/node-fetch) library to make HTTP requests, but an alternative `xhr` implementation can be provided as an option. This is necessary in HybridForms forms where an authentication is already available:
+
+```html
+<script data-hf-src="hybridforms.min.js"></script>
+```
+
+```js
+const { createClient } = HybridFormsJS
+// Provide a custom `xhr` implementation as an option
+const hybridforms = createClient({
+    baseUrl: 'example.hybridforms.com',
+    clientId: '1',
+    xhr: HybridForms.API.XHR.request
+})
+```
 
 ## Contribute
 
