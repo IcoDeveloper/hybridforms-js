@@ -8,8 +8,9 @@ import {
     RequestType,
     SigninResponse
 } from '@/types/types';
+import { CatalogsController } from './controller/CatalogsController';
 
-export class HybridFormsClient {
+export default class HybridFormsClient {
     private readonly authInstance: Authentication | null = null;
 
     public readonly request: RequestType;
@@ -18,6 +19,7 @@ export class HybridFormsClient {
     public readonly auth: AuthController;
     public readonly formDefinitions: FormDefinitionsController;
     public readonly forms: FormsController;
+    public readonly catalogs: CatalogsController;
 
     constructor(config: HybridFormsClientConfig) {
         let getAccess: (() => Promise<SigninResponse | null>) | null = null;
@@ -53,5 +55,6 @@ export class HybridFormsClient {
             this.requestWithAuth
         );
         this.forms = new FormsController(config, this.requestWithAuth);
+        this.catalogs = new CatalogsController(config, this.requestWithAuth);
     }
 }

@@ -1,4 +1,4 @@
-import { HybridFormsClient } from '@/HybridFormsClient';
+import HybridFormsClient from '@/HybridFormsClient';
 import { HybridFormsClientConfig } from '@/types/types';
 
 export const createClient = (

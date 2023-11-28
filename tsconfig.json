@@ -17,10 +17,10 @@
             "es2022",
             "dom"
         ],
-        "baseUrl": "src",
+        "baseUrl": ".",
         "paths": {
             "@/*": [
-                "./*"
+                "./src/*"
             ]
         },
         "strict": true,
