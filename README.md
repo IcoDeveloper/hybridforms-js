@@ -1,7 +1,7 @@
-# Isomorphic TS/JS Lib _(@icomedias/hybridforms)_
+# Isomorphic TS/JS Lib _(@icomedias/hybridforms-js)_
 
 [![Build status](https://img.shields.io/github/actions/workflow/status/IcoDeveloper/hybridforms-js/main.yml?branch=main)](https://github.com/IcoDeveloper/hybridforms-js/actions?query=workflow%3A%22Node.js+CI%22)
-[![NPM Version](https://img.shields.io/npm/v/@icomedias/hybridforms.svg)](https://npm.im/@icomedias/hybridforms)
+[![NPM Version](https://img.shields.io/npm/v/@icomedias/hybridforms-js.svg)](https://npm.im/@icomedias/hybridforms-js)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
 
 A Typescript/Javascript isomorphic library, for use in HybridForms forms and Node.js.
@@ -10,7 +10,7 @@ Typedoc: https://icodeveloper.github.io/hybridforms-js/
 
 ## Table of Contents
 
-- [Isomorphic TS/JS Lib _(@icomedias/hybridforms)_](#isomorphic-tsjs-lib-icomediashybridforms)
+- [Isomorphic TS/JS Lib _(@icomedias/hybridforms-js)_](#isomorphic-tsjs-lib-icomediashybridforms-js)
   - [Table of Contents](#table-of-contents)
   - [Install](#install)
     - [NPM](#npm)
@@ -30,7 +30,7 @@ Typedoc: https://icodeveloper.github.io/hybridforms-js/
 To install via NPM:
 
 ```
-npm install @icomedias/hybridforms
+npm install @icomedias/hybridforms-js
 ```
 
 ### Development
@@ -48,13 +48,13 @@ npm install
 First of all, you need to install the library:
 
 ```sh
-npm install @icomedias/hybridforms
+npm install @icomedias/hybridforms-js
 ```
 
 Then you're able to import the library and establish the connection with the database:
 
 ```js
-import { createClient } from '@icomedias/hybridforms'
+import { createClient } from '@icomedias/hybridforms-js'
 
 // Create a single HybridForms client for interacting with the API
 const hybridforms = createClient({

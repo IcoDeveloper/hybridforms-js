@@ -1,8 +1,6 @@
 {
     "branches": [
-        {
-            "name": "main"
-        }
+        "main"
     ],
     "plugins": [
         "@semantic-release/commit-analyzer",
@@ -16,12 +14,12 @@
                 "addReleases": false,
                 "assets": [
                     {
-                        "path": "dist/dist.zip",
+                        "path": "./dist.zip",
                         "name": "hybridforms-${nextRelease.gitTag}.zip",
                         "label": "hybridforms-${nextRelease.gitTag}.zip"
                     },
                     {
-                        "path": "dist/dist-umd.zip",
+                        "path": "./dist-umd.zip",
                         "name": "hybridforms-${nextRelease.gitTag}-UMD.zip",
                         "label": "hybridforms-${nextRelease.gitTag}-UMD.zip"
                     }
