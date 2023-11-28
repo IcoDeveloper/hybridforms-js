@@ -1,0 +1,33 @@
+{
+    "branches": [
+        {
+            "name": "main"
+        }
+    ],
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        [
+            "@semantic-release/github",
+            {
+                "successComment": false,
+                "releasedLabels": false,
+                "failTitle": false,
+                "addReleases": false,
+                "assets": [
+                    {
+                        "path": "dist/dist.zip",
+                        "name": "hybridforms-${nextRelease.gitTag}.zip",
+                        "label": "hybridforms-${nextRelease.gitTag}.zip"
+                    },
+                    {
+                        "path": "dist/dist-umd.zip",
+                        "name": "hybridforms-${nextRelease.gitTag}-UMD.zip",
+                        "label": "hybridforms-${nextRelease.gitTag}-UMD.zip"
+                    }
+                ]
+            }
+        ],
+        "@semantic-release/npm"
+    ]
+}

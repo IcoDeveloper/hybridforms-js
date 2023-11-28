@@ -114,3 +114,6 @@ docs
 
 # MacOS
 .DS_Store
+
+# ZIP Files
+*.zip

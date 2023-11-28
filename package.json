@@ -1,13 +1,14 @@
 {
     "name": "@icomedias/hybridforms-js",
     "description": "Isomorphic Javascript client for HybridForms",
-    "version": "0.0.1",
+    "version": "0.0.0-automated",
     "scripts": {
         "build": "run-s clear prettier build:*",
         "build:main": "tsc -p tsconfig.json",
         "build:module": "tsc -p tsconfig.esm.json",
         "build:umd": "webpack --config webpack.config.js --mode=production && npm run generate:types",
         "generate:types": "dts-bundle-generator --umd-module-name HybridFormsJS -o dist/umd/hybridforms.d.ts src/index.ts",
+        "postbuild": "cd dist && zip -r dist.zip * && cd umd && zip -r ../dist-umd.zip *",
         "clear": "rimraf dist/*",
         "prettier": "prettier src --write",
         "lint": "eslint src --ext .ts --fix",
@@ -48,6 +49,7 @@
         "ts-node": "^10.9.1",
         "ts-standard": "^12.0.2",
         "tsconfig-paths": "^4.2.0",
+        "tsconfig-paths-webpack-plugin": "^4.1.0",
         "typedoc": "^0.25.4",
         "typescript": "^5.1.6",
         "webpack": "^5.89.0",
