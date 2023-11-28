@@ -27,7 +27,6 @@
     "devDependencies": {
         "@types/chai": "^4.3.5",
         "@types/chai-uuid": "^1.0.5",
-        "@types/jwt-decode": "^3.1.0",
         "@types/mocha": "^10.0.1",
         "@types/node": "^20.4.6",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
