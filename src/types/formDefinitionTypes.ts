@@ -1,4 +1,4 @@
-interface ACL {
+export interface ACL {
     id: number;
     title: string;
     upn: string;
@@ -6,7 +6,7 @@ interface ACL {
     isGroup: boolean;
 }
 
-interface Area {
+export interface Area {
     id: number;
     clientId: number;
     title: string;
@@ -14,7 +14,7 @@ interface Area {
     modifiedBy: string;
 }
 
-interface Info {
+export interface Info {
     version: string;
     date: string;
     minAppVersion: string;
@@ -22,7 +22,7 @@ interface Info {
     conditionsOnRender: boolean;
 }
 
-interface ServerFile {
+export interface ServerFile {
     filename: string;
     size: number;
     contentType: string;
@@ -32,21 +32,21 @@ interface ServerFile {
     isReachoutExcluded: boolean;
 }
 
-interface StageDefinition {
+export interface StageDefinition {
     stages: Stages;
 }
 
-interface Stages {
+export interface Stages {
     [key: string]: Stage;
 }
 
-interface StateChanges {
+export interface StateChanges {
     [status: string]: {
         workflows: string[];
     };
 }
 
-interface StageNextItem {
+export interface StageNextItem {
     workflows: string[];
     stage?: string;
     buttonLabel?: string;
@@ -54,7 +54,7 @@ interface StageNextItem {
     dialogMessage?: string;
 }
 
-interface Stage {
+export interface Stage {
     key: string;
     label: string;
     first: boolean;

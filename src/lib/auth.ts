@@ -1,9 +1,9 @@
+import { SigninResponse } from '@/types/types';
 import * as jwt from 'jwt-decode';
-import { SigninResponse } from '../types/types';
 import { resolveRequest } from './fetch';
 import { getUrl } from './helper';
 
-interface IGatewayData {
+export interface IGatewayData {
     baseUrl: string;
     clientID?: string;
     gatewayVersion: string;
@@ -15,7 +15,7 @@ interface IGatewayData {
     preLoginScreen?: boolean;
 }
 
-enum LoginMethodEnum {
+export enum LoginMethodEnum {
     Windows = 'WindowsAuthentication',
     Basic = 'BasicAuthentication',
     ADFS = 'ADFS',

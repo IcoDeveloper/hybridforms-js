@@ -1,8 +1,8 @@
-interface FormFieldDictionary {
+export interface FormFieldDictionary {
     [key: string]: null | boolean | number | string;
 }
 
-interface Group {
+export interface Group {
     id: number;
     title: string;
     upn: string;
@@ -13,14 +13,14 @@ interface Group {
     logoUrl: string;
 }
 
-interface AclServerFormat {
+export interface AclServerFormat {
     id: number;
     title: string;
     upn: string;
     email: string;
 }
 
-interface FileServer {
+export interface FileServer {
     contentType: string;
     filename: string;
     modified: string;
@@ -29,12 +29,12 @@ interface FileServer {
     fileID: number;
 }
 
-interface StatisticPages {
+export interface StatisticPages {
     label: string;
     open: number;
 }
 
-interface Statistic {
+export interface Statistic {
     offline: number;
     open: number;
     pages: {
@@ -47,7 +47,7 @@ interface Statistic {
     twoColumns: number;
 }
 
-interface FormBriefServerFormat {
+export interface FormBriefServerFormat {
     displayVersion: string;
     completion: number;
     created: string;
@@ -71,7 +71,7 @@ interface FormBriefServerFormat {
     owner?: AclServerFormat;
 }
 
-interface FormServerFormat extends FormBriefServerFormat {
+export interface FormServerFormat extends FormBriefServerFormat {
     createdBy?: string;
     fields: FormFieldDictionary;
     files?: FileServer[];

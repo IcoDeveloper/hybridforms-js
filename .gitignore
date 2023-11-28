@@ -110,6 +110,7 @@ jspm_packages/
 
 # Output
 dist
+docs
 
 # MacOS
 .DS_Store

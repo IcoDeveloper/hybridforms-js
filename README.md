@@ -1,7 +1,7 @@
 # Isomorphic TS/JS Lib _(@isomedias/hybridforms)_
 
 [![Build status](https://img.shields.io/github/actions/workflow/status/IcoDeveloper/hybridforms-js/main.yml?branch=main)](https://github.com/IcoDeveloper/hybridforms-js/actions?query=workflow%3A%22Node.js+CI%22)
-[![NPM Version](https://img.shields.io/npm/v/@digitalcredentials/isomorphic-lib-template.svg)](https://npm.im/@digitalcredentials/isomorphic-lib-template)
+[![NPM Version](https://img.shields.io/npm/v/@isomedias/hybridforms.svg)](https://npm.im/@isomedias/hybridforms)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 > A Typescript/Javascript isomorphic library, for use in HybridForms forms and Node.js.

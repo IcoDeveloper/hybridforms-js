@@ -1,6 +1,10 @@
 name: Node.js CI
 
-on: [push]
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
 
 env:
     HF_BASE_URL: ${{ secrets.HF_BASE_URL }}

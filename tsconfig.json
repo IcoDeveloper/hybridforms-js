@@ -17,6 +17,12 @@
             "es2022",
             "dom"
         ],
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        },
         "strict": true,
         "esModuleInterop": true,
         "moduleResolution": "Node",

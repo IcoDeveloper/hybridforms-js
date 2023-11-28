@@ -1,4 +1,4 @@
-import { HybridFormsClientConfig, RequestType } from '../types/types';
+import { HybridFormsClientConfig, RequestType } from '@/types/types';
 
 export abstract class BaseController {
     protected basePath: string = '';

@@ -1,15 +1,15 @@
-import { AuthController } from './controller/AuthController';
-import { FormDefinitionsController } from './controller/FormDefinitionsController';
-import { FormsController } from './controller/FormsController';
-import { Authentication } from './lib/auth';
-import { requestWithAuth, resolveRequest } from './lib/fetch';
+import { AuthController } from '@/controller/AuthController';
+import { FormDefinitionsController } from '@/controller/FormDefinitionsController';
+import { FormsController } from '@/controller/FormsController';
+import { Authentication } from '@/lib/auth';
+import { requestWithAuth, resolveRequest } from '@/lib/fetch';
 import {
     HybridFormsClientConfig,
     RequestType,
     SigninResponse
-} from './types/types';
+} from '@/types/types';
 
-export default class HybridFormsClient {
+export class HybridFormsClient {
     private readonly authInstance: Authentication | null = null;
 
     public readonly request: RequestType;

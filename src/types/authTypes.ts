@@ -1,4 +1,4 @@
-interface Client {
+export interface Client {
     id: number;
     title: string;
     remark: string;
@@ -9,7 +9,7 @@ interface Client {
     role: string;
 }
 
-interface RoamingData {
+export interface RoamingData {
     subscribedFormdefinitions: string[];
 }
 

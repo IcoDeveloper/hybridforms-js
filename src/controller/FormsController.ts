@@ -1,12 +1,12 @@
-import { getUrl, paramsFromObject } from '../lib/helper';
+import { BaseController } from '@/controller/BaseController';
+import { getUrl, paramsFromObject } from '@/lib/helper';
 import {
     GetFormParams,
     GetFormResponse,
     ListFormFilesResponse,
     ListFormsParams,
     ListFormsResponse
-} from '../types/formTypes';
-import { BaseController } from './BaseController';
+} from '@/types/formTypes';
 
 export class FormsController extends BaseController {
     protected init(): void {

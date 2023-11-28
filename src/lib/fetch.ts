@@ -3,7 +3,7 @@ import {
     RequestType,
     SigninResponse,
     XhrRequest
-} from '../types/types';
+} from '@/types/types';
 
 type Fetch = typeof fetch;
 
