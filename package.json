@@ -12,7 +12,7 @@
         "prettier": "prettier src --write",
         "lint": "eslint src --ext .ts --fix",
         "test": "npm run lint && npm run test-node",
-        "test-node": "cross-env NODE_ENV=test DOTENV_CONFIG_PATH=.env.test TS_NODE_PROJECT=tsconfig.spec.json TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register -r dotenv/config --project tsconfig.spec.json 'test/*.ts'",
+        "test-node": "mocha",
         "docs": "typedoc"
     },
     "files": [
@@ -33,7 +33,6 @@
         "@typescript-eslint/parser": "^5.0.0",
         "chai": "^4.3.7",
         "chai-uuid": "^1.0.6",
-        "cross-env": "^7.0.3",
         "dotenv": "^16.3.1",
         "dts-bundle-generator": "^8.1.2",
         "eslint": "^8.54.0",
@@ -48,6 +47,7 @@
         "ts-loader": "^9.5.1",
         "ts-node": "^10.9.1",
         "ts-standard": "^12.0.2",
+        "tsconfig-paths": "^4.2.0",
         "typedoc": "^0.25.4",
         "typescript": "^5.1.6",
         "webpack": "^5.89.0",
