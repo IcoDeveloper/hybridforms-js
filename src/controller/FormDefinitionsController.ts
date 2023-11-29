@@ -1,9 +1,9 @@
-import { BaseController } from '@/controller/BaseController';
-import { getUrl } from '@/lib/helper';
+import { getUrl } from '../lib/helper';
 import {
     FormDefinitionResponse,
     GroupResponse
-} from '@/types/formDefinitionTypes';
+} from '../types/formDefinitionTypes';
+import { BaseController } from './BaseController';
 
 export class FormDefinitionsController extends BaseController {
     protected init(): void {

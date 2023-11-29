@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
     entry: './src/index.ts',
@@ -34,9 +33,6 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.js', '.json'],
-        plugins: [
-            new TsconfigPathsPlugin({}),
-        ]
     },
     externalsPresets: { node: true },
     plugins: [

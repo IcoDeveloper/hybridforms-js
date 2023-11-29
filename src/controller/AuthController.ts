@@ -1,11 +1,11 @@
-import { Authentication } from '@/lib/auth';
-import { getUrl } from '@/lib/helper';
-import { UserResponse } from '@/types/authTypes';
+import { Authentication } from '../lib/auth';
+import { getUrl } from '../lib/helper';
+import { UserResponse } from '../types/authTypes';
 import {
     HybridFormsClientConfig,
     RequestType,
     SigninResponse
-} from '@/types/types';
+} from '../types/types';
 import { BaseController } from './BaseController';
 
 export class AuthController extends BaseController {

@@ -1,5 +1,5 @@
-import HybridFormsClient from '@/HybridFormsClient';
-import { HybridFormsClientConfig } from '@/types/types';
+import HybridFormsClient from './HybridFormsClient';
+import { HybridFormsClientConfig } from './types/types';
 
 export const createClient = (
     config: HybridFormsClientConfig

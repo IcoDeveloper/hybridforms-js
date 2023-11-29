@@ -1,5 +1,5 @@
-import { getUrl } from '@/lib/helper';
-import { FormServerFormat, SimpleAPIData } from '@/types/formTypes';
+import { getUrl } from '../lib/helper';
+import { FormServerFormat, SimpleAPIData } from '../types/formTypes';
 import { BaseController } from './BaseController';
 
 export class SimpleAPIController extends BaseController {

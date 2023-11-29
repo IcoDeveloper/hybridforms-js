@@ -1,11 +1,11 @@
-import { getUrl, paramsFromObject } from '@/lib/helper';
+import { getUrl, paramsFromObject } from '../lib/helper';
 import {
     CatalogListResponse,
     DeleteCatalogResponse,
     ExportCatalogParams,
     GetCatalogParams,
     GetCatalogResponse
-} from '@/types/catalogTypes';
+} from '../types/catalogTypes';
 import { BaseController } from './BaseController';
 
 export class CatalogsController extends BaseController {
