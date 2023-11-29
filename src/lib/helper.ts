@@ -3,7 +3,10 @@ export const getUrl = (
     baseUrl: string,
     params?: URLSearchParams
 ): string => {
-    const urlInstance = new URL(url, baseUrl);
+    if (baseUrl.endsWith('/')) {
+        baseUrl = baseUrl.slice(0, -1);
+    }
+    const urlInstance = new URL(baseUrl + url);
     if (params) {
         urlInstance.search = params.toString();
     }

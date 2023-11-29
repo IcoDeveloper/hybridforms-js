@@ -6,6 +6,7 @@ import {
     ListFormsParams,
     ListFormsResponse
 } from '../types/formTypes';
+import { FetchResponse } from '../types/types';
 import { BaseController } from './BaseController';
 
 export class FormsController extends BaseController {
@@ -16,8 +17,8 @@ export class FormsController extends BaseController {
     public async listForms(
         formID: string,
         params: ListFormsParams = {}
-    ): Promise<ListFormsResponse> {
-        const request = await this.request({
+    ): Promise<FetchResponse<ListFormsResponse>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/forms`,
                 this.config.baseUrl,
@@ -26,15 +27,15 @@ export class FormsController extends BaseController {
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
     public async getForm(
         formID: string,
         itemID: string,
         params: GetFormParams = {}
-    ): Promise<GetFormResponse> {
-        const request = await this.request({
+    ): Promise<FetchResponse<GetFormResponse>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/forms/${itemID}`,
                 this.config.baseUrl,
@@ -43,14 +44,14 @@ export class FormsController extends BaseController {
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
     public async listFormFiles(
         formID: string,
         itemID: string
-    ): Promise<ListFormFilesResponse> {
-        const request = await this.request({
+    ): Promise<FetchResponse<ListFormFilesResponse>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/forms/${itemID}/files`,
                 this.config.baseUrl
@@ -58,15 +59,15 @@ export class FormsController extends BaseController {
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
     public async getFormFile(
         formID: string,
         itemID: string,
         filename: string
-    ): Promise<Blob> {
-        const request = await this.request({
+    ): Promise<FetchResponse<Blob>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/forms/${itemID}/files/${filename}`,
                 this.config.baseUrl
@@ -74,6 +75,6 @@ export class FormsController extends BaseController {
             type: 'GET',
             responseType: 'blob'
         });
-        return request.response;
+        return response;
     }
 }

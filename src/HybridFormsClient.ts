@@ -34,6 +34,17 @@ export default class HybridFormsClient {
             getAccess = this.authInstance.getAccess.bind(this.authInstance);
         }
 
+        if (config.token) {
+            const parts = config.token.split(' ');
+            const accessObject: SigninResponse = {
+                access_token: parts[1],
+                token_type: parts[0]
+            };
+            getAccess = async () => {
+                return await Promise.resolve(accessObject);
+            };
+        }
+
         if (config.xhr) {
             getAccess = async () => {
                 return await Promise.resolve(null);

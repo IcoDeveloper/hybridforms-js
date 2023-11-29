@@ -6,6 +6,7 @@ import {
     GetCatalogParams,
     GetCatalogResponse
 } from '../types/catalogTypes';
+import { FetchResponse } from '../types/types';
 import { BaseController } from './BaseController';
 
 export class CatalogsController extends BaseController {
@@ -13,20 +14,20 @@ export class CatalogsController extends BaseController {
         this.basePath = '/api/catalogs';
     }
 
-    public async listCatalogs(): Promise<CatalogListResponse[]> {
-        const request = await this.request({
+    public async listCatalogs(): Promise<FetchResponse<CatalogListResponse[]>> {
+        const response = await this.request({
             url: getUrl(`${this.basePath}`, this.config.baseUrl),
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
     public async getCatalog(
         catalogName: string,
         params: GetCatalogParams = {}
-    ): Promise<GetCatalogResponse> {
-        const request = await this.request({
+    ): Promise<FetchResponse<GetCatalogResponse>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${catalogName}`,
                 this.config.baseUrl,
@@ -35,14 +36,14 @@ export class CatalogsController extends BaseController {
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
     public async exportCatalog(
         catalogName: string,
         params: ExportCatalogParams = {}
-    ): Promise<any> {
-        const request = await this.request({
+    ): Promise<FetchResponse<any>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${catalogName}/export`,
                 this.config.baseUrl,
@@ -51,24 +52,24 @@ export class CatalogsController extends BaseController {
             type: 'GET',
             responseType: params?.format === 'json' ? 'json' : 'text'
         });
-        return request.response;
+        return response;
     }
 
     public async deleteCatalog(
         catalogName: string
-    ): Promise<DeleteCatalogResponse> {
-        const request = await this.request({
+    ): Promise<FetchResponse<DeleteCatalogResponse>> {
+        const response = await this.request({
             url: getUrl(`${this.basePath}/${catalogName}`, this.config.baseUrl),
             type: 'DELETE',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
     public async createCatalog(
         catalogName: string,
         data: string | object
-    ): Promise<string[]> {
+    ): Promise<FetchResponse<string[]>> {
         let headers = {};
         if (typeof data === 'object') {
             headers = {
@@ -76,20 +77,20 @@ export class CatalogsController extends BaseController {
             };
             data = JSON.stringify(data);
         }
-        const request = await this.request({
+        const response = await this.request({
             url: getUrl(`${this.basePath}/${catalogName}`, this.config.baseUrl),
             type: 'POST',
             responseType: 'json',
             headers,
             data
         });
-        return request.response;
+        return response;
     }
 
     public async updateCatalog(
         catalogName: string,
         data: string | object
-    ): Promise<string[]> {
+    ): Promise<FetchResponse<string[]>> {
         let headers = {};
         if (typeof data === 'object') {
             headers = {
@@ -97,13 +98,13 @@ export class CatalogsController extends BaseController {
             };
             data = JSON.stringify(data);
         }
-        const request = await this.request({
+        const response = await this.request({
             url: getUrl(`${this.basePath}/${catalogName}`, this.config.baseUrl),
             type: 'PUT',
             responseType: 'json',
             headers,
             data
         });
-        return request.response;
+        return response;
     }
 }

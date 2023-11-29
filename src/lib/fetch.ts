@@ -10,7 +10,7 @@ type Fetch = typeof fetch;
 const fetchRequest = async (
     obj: XhrRequest,
     fetchInstance: Fetch
-): Promise<FetchResponse> => {
+): Promise<FetchResponse<unknown>> => {
     if (typeof obj.type === 'undefined') {
         obj.type = 'GET';
     }
@@ -50,7 +50,7 @@ const fetchRequest = async (
                 status: request.status,
                 statusText: request.statusText,
                 response: res,
-                responseUrl: request.url,
+                responseURL: request.url,
                 getAllResponseHeaders: () => {
                     const headersArray: string[] = [];
                     request.headers.forEach((value, key) => {
@@ -91,7 +91,7 @@ export const requestWithAuth = (
 
     const retry = async (
         obj: XhrRequest
-    ): Promise<XMLHttpRequest | FetchResponse> => {
+    ): Promise<XMLHttpRequest | FetchResponse<unknown>> => {
         if (retryRequest) {
             retryRequest = false;
             const auth = await getAccess();
@@ -107,7 +107,9 @@ export const requestWithAuth = (
         }
     };
 
-    return async (obj: XhrRequest): Promise<XMLHttpRequest | FetchResponse> => {
+    return async (
+        obj: XhrRequest
+    ): Promise<XMLHttpRequest | FetchResponse<unknown>> => {
         const auth = await getAccess();
 
         if (!obj.headers) {

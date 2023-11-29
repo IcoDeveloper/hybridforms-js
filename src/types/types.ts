@@ -1,12 +1,13 @@
 export type RequestType = (
     obj: XhrRequest
-) => Promise<XMLHttpRequest | FetchResponse>;
+) => Promise<XMLHttpRequest | FetchResponse<any>>;
 
 export interface HybridFormsClientConfig {
     baseUrl: string;
     clientId: string;
     user?: string;
     password?: string;
+    token?: string;
     xhr?: (obj: XhrRequest) => Promise<XMLHttpRequest>;
 }
 
@@ -23,11 +24,11 @@ export interface XhrRequest {
     responseType?: XMLHttpRequestResponseType;
 }
 
-export interface FetchResponse {
+export interface FetchResponse<T> {
     status: number;
     statusText: string;
-    response: unknown;
-    responseUrl: string;
+    response: T;
+    responseURL: string;
     getAllResponseHeaders: () => string;
 }
 

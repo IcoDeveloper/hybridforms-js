@@ -95,11 +95,11 @@ describe('SimpleAPIController', () => {
             formData
         );
         expect(form).to.not.equal(null);
-        expect(form?.itemID).to.not.equal(null);
-        expect(form?.itemID).to.be.a('string');
-        expect(form?.listData?.ma_name).to.equal('Erwin Schrödinger');
+        expect(form?.response?.itemID).to.not.equal(null);
+        expect(form?.response?.itemID).to.be.a('string');
+        expect(form?.response?.listData?.ma_name).to.equal('Erwin Schrödinger');
 
-        itemID = form?.itemID;
+        itemID = form?.response?.itemID;
     });
 
     it('.put()', async () => {
@@ -117,8 +117,10 @@ describe('SimpleAPIController', () => {
             }
         );
         expect(form).to.not.equal(null);
-        expect(form?.itemID).to.not.equal(null);
-        expect(form?.itemID).to.be.a('string');
-        expect(form?.listData?.ma_name).to.equal('Erwin Schrödinger Update');
+        expect(form?.response?.itemID).to.not.equal(null);
+        expect(form?.response?.itemID).to.be.a('string');
+        expect(form?.response?.listData?.ma_name).to.equal(
+            'Erwin Schrödinger Update'
+        );
     });
 });

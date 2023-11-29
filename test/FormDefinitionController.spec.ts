@@ -14,7 +14,7 @@ describe('FormDefinitionController', () => {
         const formDefinitions =
             await hybridforms.formDefinitions.getFormDefinitions();
         expect(formDefinitions).to.not.equal(null);
-        expect(formDefinitions?.length).to.not.equal(0);
+        expect(formDefinitions?.response?.length).to.not.equal(0);
     });
 
     it('.getFormDefinition()', async () => {
@@ -23,9 +23,9 @@ describe('FormDefinitionController', () => {
                 '3ee88190-749a-4c65-8437-e392f6eabf71'
             );
         expect(formDefinition).to.not.equal(null);
-        expect(formDefinition?.id).to.equal(38);
-        expect(formDefinition?.version).to.be.an('number');
-        expect(formDefinition?.files?.length).to.be.greaterThan(30);
+        expect(formDefinition?.response?.id).to.equal(38);
+        expect(formDefinition?.response?.version).to.be.an('number');
+        expect(formDefinition?.response?.files?.length).to.be.greaterThan(30);
     });
 
     it('.getMyGroups()', async () => {
@@ -33,7 +33,7 @@ describe('FormDefinitionController', () => {
             '3ee88190-749a-4c65-8437-e392f6eabf71'
         );
         expect(groups).to.not.equal(null);
-        expect(groups?.length).to.equal(4);
+        expect(groups?.response?.length).to.equal(4);
     });
 
     it('.getFormDefinitionFile()', async () => {
@@ -42,8 +42,8 @@ describe('FormDefinitionController', () => {
             'testForm.html'
         );
         expect(file).to.not.equal(null);
-        expect(file?.type).to.equal('text/html');
-        expect(file?.size).to.greaterThan(200000);
+        expect(file?.response?.type).to.equal('text/html');
+        expect(file?.response?.size).to.greaterThan(200000);
     });
 
     it('.getFormDefinitionStructure()', async () => {
@@ -52,8 +52,8 @@ describe('FormDefinitionController', () => {
                 '3ee88190-749a-4c65-8437-e392f6eabf71'
             );
         expect(structure).to.not.equal(null);
-        expect(structure?.sections).to.be.an('array');
-        expect(structure?.sections?.length).to.not.equal(0);
-        expect(structure?.info).to.not.equal(null);
+        expect(structure?.response?.sections).to.be.an('array');
+        expect(structure?.response?.sections?.length).to.not.equal(0);
+        expect(structure?.response?.info).to.not.equal(null);
     });
 });

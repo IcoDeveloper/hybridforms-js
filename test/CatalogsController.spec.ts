@@ -13,7 +13,7 @@ describe('CatalogsController', () => {
     it('.listCatalogs()', async () => {
         const catalogs = await hybridforms.catalogs.listCatalogs();
         expect(catalogs).to.not.equal(null);
-        expect(catalogs?.length).to.greaterThan(0);
+        expect(catalogs?.response?.length).to.greaterThan(0);
     });
 
     it('.getCatalog()', async () => {
@@ -48,7 +48,7 @@ describe('CatalogsController', () => {
             data
         );
         expect(catalog).to.not.equal(null);
-        expect(catalog).to.be.an('array');
+        expect(catalog?.response).to.be.an('array');
     });
 
     it('.updateCatalog()', async () => {
@@ -74,13 +74,13 @@ describe('CatalogsController', () => {
             data
         );
         expect(catalog).to.not.equal(null);
-        expect(catalog).to.be.an('array');
+        expect(catalog?.response).to.be.an('array');
     });
 
     it('.deleteCatalog()', async () => {
         const catalog =
             await hybridforms.catalogs.deleteCatalog('DummyCatalog_Test');
         expect(catalog).to.not.equal(null);
-        expect(catalog?.deleted).to.equal(true);
+        expect(catalog?.response?.deleted).to.equal(true);
     });
 });

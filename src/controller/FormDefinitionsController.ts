@@ -3,6 +3,7 @@ import {
     FormDefinitionResponse,
     GroupResponse
 } from '../types/formDefinitionTypes';
+import { FetchResponse } from '../types/types';
 import { BaseController } from './BaseController';
 
 export class FormDefinitionsController extends BaseController {
@@ -10,28 +11,32 @@ export class FormDefinitionsController extends BaseController {
         this.basePath = `/api/app/${this.config.clientId}/formdefinitions`;
     }
 
-    public async getFormDefinitions(): Promise<FormDefinitionResponse[]> {
-        const request = await this.request({
+    public async getFormDefinitions(): Promise<
+        FetchResponse<FormDefinitionResponse[]>
+    > {
+        const response = await this.request({
             url: getUrl(this.basePath, this.config.baseUrl),
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
     public async getFormDefinition(
         formID: string
-    ): Promise<FormDefinitionResponse> {
-        const request = await this.request({
+    ): Promise<FetchResponse<FormDefinitionResponse>> {
+        const response = await this.request({
             url: getUrl(`${this.basePath}/${formID}`, this.config.baseUrl),
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
-    public async getMyGroups(formID: string): Promise<GroupResponse[]> {
-        const request = await this.request({
+    public async getMyGroups(
+        formID: string
+    ): Promise<FetchResponse<GroupResponse[]>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/mygroups`,
                 this.config.baseUrl
@@ -39,14 +44,14 @@ export class FormDefinitionsController extends BaseController {
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
     public async getFormDefinitionFile(
         formID: string,
         filename: string
-    ): Promise<Blob> {
-        const request = await this.request({
+    ): Promise<FetchResponse<Blob>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/files/${filename}`,
                 this.config.baseUrl
@@ -54,11 +59,13 @@ export class FormDefinitionsController extends BaseController {
             type: 'GET',
             responseType: 'blob'
         });
-        return request.response;
+        return response;
     }
 
-    public async getFormDefinitionStructure(formID: string): Promise<any> {
-        const request = await this.request({
+    public async getFormDefinitionStructure(
+        formID: string
+    ): Promise<FetchResponse<any>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/structure`,
                 this.config.baseUrl
@@ -66,6 +73,6 @@ export class FormDefinitionsController extends BaseController {
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 }

@@ -15,8 +15,8 @@ describe('FormController', () => {
             '3ee88190-749a-4c65-8437-e392f6eabf71'
         );
         expect(forms).to.not.equal(null);
-        expect(forms?.forms).to.not.equal(null);
-        expect(forms?.forms).to.be.an('array');
+        expect(forms?.response?.forms).to.not.equal(null);
+        expect(forms?.response?.forms).to.be.an('array');
     });
 
     it('.getForm()', async () => {
@@ -25,8 +25,8 @@ describe('FormController', () => {
             '868aa759-8c9b-de3c-a3d9-1c29932b4e05'
         );
         expect(form).to.not.equal(null);
-        expect(form?.version).to.equal(16);
-        expect(form?.files?.length).to.equal(4);
+        expect(form?.response?.version).to.equal(16);
+        expect(form?.response?.files?.length).to.equal(4);
     });
 
     it('.listFormFiles()', async () => {
@@ -35,8 +35,8 @@ describe('FormController', () => {
             '868aa759-8c9b-de3c-a3d9-1c29932b4e05'
         );
         expect(files).to.not.equal(null);
-        expect(files).to.be.an('array');
-        expect(files?.length).to.equal(4);
+        expect(files?.response).to.be.an('array');
+        expect(files?.response?.length).to.equal(4);
     });
 
     it('.getFormFile()', async () => {
@@ -46,7 +46,7 @@ describe('FormController', () => {
             'Basistest-Controls.pdf'
         );
         expect(file).to.not.equal(null);
-        expect(file?.type).to.equal('application/pdf');
-        expect(file?.size).to.greaterThan(1000000);
+        expect(file?.response?.type).to.equal('application/pdf');
+        expect(file?.response?.size).to.greaterThan(1000000);
     });
 });

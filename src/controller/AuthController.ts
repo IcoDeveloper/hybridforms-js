@@ -2,6 +2,7 @@ import { Authentication } from '../lib/auth';
 import { getUrl } from '../lib/helper';
 import { UserResponse } from '../types/authTypes';
 import {
+    FetchResponse,
     HybridFormsClientConfig,
     RequestType,
     SigninResponse
@@ -29,17 +30,17 @@ export class AuthController extends BaseController {
         return await this.authInstance.getAccess();
     }
 
-    public async getUserData(): Promise<UserResponse> {
-        const request = await this.request({
+    public async getUserData(): Promise<FetchResponse<UserResponse>> {
+        const response = await this.request({
             url: getUrl(`${this.basePath}/userData`, this.config.baseUrl),
             type: 'GET',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 
-    public async getUserDataWithClient(): Promise<UserResponse> {
-        const request = await this.request({
+    public async getUserDataWithClient(): Promise<FetchResponse<UserResponse>> {
+        const response = await this.request({
             url: getUrl(
                 `${this.basePath}/userData/${this.config.clientId}`,
                 this.config.baseUrl
@@ -47,6 +48,6 @@ export class AuthController extends BaseController {
             type: 'POST',
             responseType: 'json'
         });
-        return request.response;
+        return response;
     }
 }
