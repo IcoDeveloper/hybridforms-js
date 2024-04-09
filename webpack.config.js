@@ -1,9 +1,14 @@
-const webpack = require('webpack')
-const path = require('path')
-const TerserPlugin = require('terser-webpack-plugin')
+const webpack = require('webpack');
+const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const {
+    BundleDeclarationsWebpackPlugin
+} = require('bundle-declarations-webpack-plugin');
+
+const entry = './src/index.ts';
 
 module.exports = {
-    entry: './src/index.ts',
+    entry,
     output: {
         path: path.resolve(__dirname, 'dist/umd'),
         filename: 'hybridforms.min.js',
@@ -16,7 +21,7 @@ module.exports = {
         minimize: true,
         minimizer: [
             new TerserPlugin({
-                extractComments: false,
+                extractComments: false
             })
         ]
     },
@@ -32,7 +37,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.ts', '.js', '.json'],
+        extensions: ['.ts', '.js', '.json']
     },
     externalsPresets: { node: true },
     plugins: [
@@ -42,5 +47,15 @@ module.exports = {
         new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1
         }),
+        new BundleDeclarationsWebpackPlugin({
+            entry: {
+                filePath: entry,
+                output: {
+                    umdModuleName: 'HybridFormsJS',
+                    noBanner: true
+                }
+            },
+            outFile: 'hybridforms.d.ts'
+        })
     ]
-}
+};
