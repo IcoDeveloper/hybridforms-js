@@ -1,9 +1,6 @@
-import { expect, use } from 'chai';
-import chaiUuid from 'chai-uuid';
+import { expect } from 'chai';
 import { createClient } from '../src';
 import HybridFormsClient from '../src/HybridFormsClient';
-
-use(chaiUuid);
 
 const hybridforms: HybridFormsClient = createClient({
     baseUrl: process.env.HF_BASE_URL ?? '',
@@ -14,12 +11,14 @@ const hybridforms: HybridFormsClient = createClient({
 
 describe('HybridFormsClient', () => {
     it('.request()', async () => {
+        const url =
+            (process.env.HF_BASE_URL as string) + '/api/app/gatewaydata';
         const resp = await hybridforms.request({
-            url: 'https://httpbin.org/uuid',
+            url,
             type: 'GET',
             responseType: 'json'
         });
         expect(resp?.response).to.not.equal(null);
-        expect(resp?.response?.uuid).to.be.a.uuid('v4');
+        expect(resp?.response?.product).to.equal('HybridForms Server');
     });
 });
