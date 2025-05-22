@@ -1,7 +1,8 @@
 import { getUrl } from '../lib/helper';
 import {
     FormDefinitionResponse,
-    GroupResponse
+    GroupResponse,
+    IFormDefinitionStructure
 } from '../types/formDefinitionTypes';
 import { FetchResponse } from '../types/types';
 import { BaseController } from './BaseController';
@@ -64,7 +65,7 @@ export class FormDefinitionsController extends BaseController {
 
     public async getFormDefinitionStructure(
         formID: string
-    ): Promise<FetchResponse<object>> {
+    ): Promise<FetchResponse<IFormDefinitionStructure>> {
         const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/structure`,
