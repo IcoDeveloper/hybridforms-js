@@ -16,9 +16,7 @@ export interface XhrRequest {
     withCredentials?: boolean;
     type?: string;
     data?: any;
-    headers?: {
-        [key: string]: string;
-    };
+    headers?: Record<string, string>;
     user?: string;
     password?: string;
     responseType?: XMLHttpRequestResponseType;

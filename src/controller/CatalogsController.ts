@@ -2,6 +2,7 @@ import { getUrl, paramsFromObject } from '../lib/helper';
 import {
     CatalogListResponse,
     DeleteCatalogResponse,
+    ExportCatalogMapping,
     ExportCatalogParams,
     GetCatalogParams,
     GetCatalogResponse
@@ -39,10 +40,16 @@ export class CatalogsController extends BaseController {
         return response;
     }
 
-    public async exportCatalog(
+    public async exportCatalog<T extends keyof ExportCatalogMapping = never>(
         catalogName: string,
-        params: ExportCatalogParams = {}
-    ): Promise<FetchResponse<any>> {
+        params: ExportCatalogParams<T> = {}
+    ): Promise<
+        FetchResponse<
+            ExportCatalogMapping[T] extends null
+                ? string
+                : ExportCatalogMapping[T]
+        >
+    > {
         const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${catalogName}/export`,

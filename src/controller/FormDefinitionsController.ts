@@ -64,7 +64,7 @@ export class FormDefinitionsController extends BaseController {
 
     public async getFormDefinitionStructure(
         formID: string
-    ): Promise<FetchResponse<any>> {
+    ): Promise<FetchResponse<object>> {
         const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/structure`,

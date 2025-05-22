@@ -33,17 +33,7 @@ export interface ServerFile {
 }
 
 export interface StageDefinition {
-    stages: Stages;
-}
-
-export interface Stages {
-    [key: string]: Stage;
-}
-
-export interface StateChanges {
-    [status: string]: {
-        workflows: string[];
-    };
+    stages: Record<string, Stage>;
 }
 
 export interface StageNextItem {
@@ -60,7 +50,12 @@ export interface Stage {
     first: boolean;
     next: StageNextItem;
     appKioskMode: boolean;
-    stateChanges: StateChanges;
+    stateChanges: Record<
+        string,
+        {
+            workflows: string[];
+        }
+    >;
     expiry: any[];
 }
 
@@ -78,7 +73,7 @@ export interface FormDefinitionResponse {
     deleteGroupDays: null;
     purgeDeletedDays: number;
     files: ServerFile[];
-    flags: { [key: string]: boolean };
+    flags: Record<string, boolean>;
     created: string;
     createdBy: string;
     modified: string;

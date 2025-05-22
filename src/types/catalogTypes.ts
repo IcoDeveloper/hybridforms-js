@@ -23,8 +23,29 @@ export interface CatalogListResponse {
     originalFilename: string;
 }
 
-export interface ExportCatalogParams {
-    format?: 'json' | 'xml' | 'csv' | 'excel';
+export interface JsonExportCatalogEntry {
+    Fields: Record<string, string>;
+    Users: string[];
+    Groups: string[];
+}
+
+export interface JsonExportCatalog {
+    Name: string;
+    Version: string;
+    Remark: string;
+    entries: JsonExportCatalogEntry[];
+    IgnoreColumns: string[];
+}
+
+export interface ExportCatalogMapping {
+    json: JsonExportCatalog;
+    xml: string;
+    csv: string;
+    excel: string;
+}
+
+export interface ExportCatalogParams<T> {
+    format?: T;
 }
 
 export interface GetCatalogParams {

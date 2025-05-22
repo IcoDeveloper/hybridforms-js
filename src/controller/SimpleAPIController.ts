@@ -1,5 +1,5 @@
 import { getUrl } from '../lib/helper';
-import { FormServerFormat, SimpleAPIData } from '../types/formTypes';
+import { FormFullServerFormat, SimpleAPIData } from '../types/formTypes';
 import { FetchResponse } from '../types/types';
 import { BaseController } from './BaseController';
 
@@ -11,7 +11,7 @@ export class SimpleAPIController extends BaseController {
     public async post(
         formID: string,
         data: SimpleAPIData
-    ): Promise<FetchResponse<FormServerFormat>> {
+    ): Promise<FetchResponse<FormFullServerFormat>> {
         const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/forms/sapi`,
@@ -31,7 +31,7 @@ export class SimpleAPIController extends BaseController {
         formID: string,
         itemID: string,
         data: SimpleAPIData
-    ): Promise<FetchResponse<FormServerFormat>> {
+    ): Promise<FetchResponse<FormFullServerFormat>> {
         const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/forms/sapi/${itemID}`,

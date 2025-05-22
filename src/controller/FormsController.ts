@@ -1,7 +1,9 @@
 import { getUrl, paramsFromObject } from '../lib/helper';
 import {
+    FormFormatMapping,
+    FormFullServerFormat,
+    FormMinimalServerFormat,
     GetFormParams,
-    GetFormResponse,
     ListFormFilesResponse,
     ListFormsParams,
     ListFormsResponse
@@ -14,10 +16,20 @@ export class FormsController extends BaseController {
         this.basePath = `/api/app/${this.config.clientId}/formdefinitions`;
     }
 
-    public async listForms(
+    public async listForms<
+        T extends Exclude<keyof FormFormatMapping, 'repeating'> = never
+    >(
         formID: string,
-        params: ListFormsParams = {}
-    ): Promise<FetchResponse<ListFormsResponse>> {
+        params: ListFormsParams<T> = {}
+    ): Promise<
+        FetchResponse<
+            ListFormsResponse<
+                FormFormatMapping[T] extends null
+                    ? FormMinimalServerFormat
+                    : FormFormatMapping[T]
+            >
+        >
+    > {
         const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/forms`,
@@ -30,16 +42,22 @@ export class FormsController extends BaseController {
         return response;
     }
 
-    public async getForm(
+    public async getForm<T extends keyof FormFormatMapping = never>(
         formID: string,
         itemID: string,
-        params: GetFormParams = {}
-    ): Promise<FetchResponse<GetFormResponse>> {
+        params: GetFormParams<T> = {}
+    ): Promise<
+        FetchResponse<
+            FormFormatMapping[T] extends null
+                ? FormFullServerFormat
+                : FormFormatMapping[T]
+        >
+    > {
         const response = await this.request({
             url: getUrl(
                 `${this.basePath}/${formID}/forms/${itemID}`,
                 this.config.baseUrl,
-                paramsFromObject(params)
+                paramsFromObject(params ?? {})
             ),
             type: 'GET',
             responseType: 'json'

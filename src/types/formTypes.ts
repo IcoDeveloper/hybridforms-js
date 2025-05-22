@@ -1,6 +1,7 @@
-export interface FormFieldDictionary {
-    [key: string]: null | boolean | number | string;
-}
+export type FormFieldDictionary = Record<
+    string,
+    null | boolean | number | string
+>;
 
 export interface Group {
     id: number;
@@ -18,6 +19,7 @@ export interface AclServerFormat {
     title: string;
     upn: string;
     email: string;
+    isGroup: boolean;
 }
 
 export interface FileServer {
@@ -37,9 +39,7 @@ export interface StatisticPages {
 export interface Statistic {
     offline: number;
     open: number;
-    pages: {
-        [key: string]: StatisticPages;
-    };
+    pages: Record<string, StatisticPages>;
     statusGroupToEdit: number;
     statusEditToGroup: number;
     time: number;
@@ -47,34 +47,43 @@ export interface Statistic {
     twoColumns: number;
 }
 
-export interface FormBriefServerFormat {
-    displayVersion: string;
-    completion: number;
-    created: string;
-    feedback: string;
+export interface FormMinimalServerFormat {
     itemID: string;
-    listData: FormFieldDictionary;
-    lockedBy?: string;
-    lockedDate?: string;
-    mainImage: string;
-    modified?: string;
-    modifiedBy?: string;
-    pdfDate?: string;
-    pdfVersion?: number;
-    saveStatus: string;
-    status: string;
-    title: string;
     version: number;
-    stage?: string;
+    displayVersion: string;
+    title: string;
+    status: string;
     isExtendedRead: boolean;
-    group: Group;
-    owner?: AclServerFormat;
+    completion: number;
+    feedback: string;
+    modified: string;
+    created: string;
+    pdfDate: string;
+    pdfReady: boolean;
+    pdfVersion: number;
+    stage: string;
+    reachOutUrl: string;
+    reachOutDate: string;
+    badges: any[];
+    scheduledDate: string;
 }
 
-export interface FormServerFormat extends FormBriefServerFormat {
-    createdBy?: string;
+export interface FormBriefServerFormat extends FormMinimalServerFormat {
+    saveStatus: string;
+    listData: FormFieldDictionary;
+    modifiedBy: string;
+    modifiedUser: AclServerFormat;
+    createdBy: string;
+    createdUser: AclServerFormat;
+    group: Group;
+    owner: AclServerFormat;
+    lockedBy?: string;
+    lockedDate?: string;
+}
+
+export interface FormFullServerFormat extends FormBriefServerFormat {
     fields: FormFieldDictionary;
-    files?: FileServer[];
+    files: FileServer[];
     audio: any[];
     documents: any[];
     links: any[];
@@ -85,8 +94,19 @@ export interface FormServerFormat extends FormBriefServerFormat {
     statistic: Statistic;
 }
 
-export interface ListFormsParams {
-    format?: 'minimal' | 'brief' | 'full';
+export interface FormRepeatingServerFormat extends FormFullServerFormat {
+    repeatingfields: Record<string, FormFieldDictionary>;
+}
+
+export interface FormFormatMapping {
+    minimal: FormMinimalServerFormat;
+    brief: FormBriefServerFormat;
+    full: FormFullServerFormat;
+    repeating: FormFullServerFormat;
+}
+
+export interface ListFormsParams<T> {
+    format?: T;
     allforms?: boolean;
     pdfready?: boolean;
     stage?: string;
@@ -101,8 +121,8 @@ export interface ListFormsParams {
     hitsPerPage?: number;
 }
 
-export interface ListFormsResponse {
-    forms: FormServerFormat[];
+export interface ListFormsResponse<T> {
+    forms: T[];
     queryDate: string;
     isPaged: boolean;
     page: number;
@@ -111,11 +131,9 @@ export interface ListFormsResponse {
     totalPages: number;
 }
 
-export interface GetFormParams {
-    format?: 'minimal' | 'brief' | 'full' | 'repeating';
+export interface GetFormParams<T> {
+    format?: T;
 }
-
-export type GetFormResponse = FormServerFormat;
 
 export type ListFormFilesResponse = FileServer[];
 
@@ -123,10 +141,6 @@ export interface IRepeatingUnitTab {
     operation?: 'create' | 'update' | 'delete';
     position?: number;
     fields?: FormFieldDictionary;
-}
-
-export interface RepeatingUnitTabs {
-    [key: string]: IRepeatingUnitTab[];
 }
 
 export interface FormBinaryContent {
@@ -147,7 +161,7 @@ export interface SimpleAPIData {
     group?: string;
     feedback?: string;
     fields?: FormFieldDictionary;
-    repeatingUnits?: RepeatingUnitTabs;
+    repeatingUnits?: Record<string, IRepeatingUnitTab[]>;
     pictures?: FormBinaryContent[];
     documents?: FormBinaryContent[];
     audio?: FormBinaryContent[];
