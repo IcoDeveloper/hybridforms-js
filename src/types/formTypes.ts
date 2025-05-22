@@ -159,6 +159,7 @@ export interface SimpleAPIData {
     title?: string;
     owner?: string;
     group?: string;
+    status?: string;
     feedback?: string;
     fields?: FormFieldDictionary;
     repeatingUnits?: Record<string, IRepeatingUnitTab[]>;
