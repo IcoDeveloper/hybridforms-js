@@ -102,7 +102,7 @@ export interface FormFormatMapping {
     minimal: FormMinimalServerFormat;
     brief: FormBriefServerFormat;
     full: FormFullServerFormat;
-    repeating: FormFullServerFormat;
+    repeating: FormRepeatingServerFormat;
 }
 
 export interface ListFormsParams<T> {
